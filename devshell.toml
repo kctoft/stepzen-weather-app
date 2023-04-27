@@ -1,5 +1,5 @@
 [devshell]
-name = "weatherai-app"
+name = "weather ai"
 
 packages = ["nixpkgs-fmt", "rnix-lsp", "statix", "treefmt", "nodejs_20"]
 
