@@ -1,0 +1,8 @@
+[devshell]
+name = "weatherai-app"
+
+packages = ["nixpkgs-fmt", "rnix-lsp", "statix", "treefmt", "nodejs_20"]
+
+[[env]]
+name = "PATH"
+prefix = "$PWD/node_modules/.bin"
