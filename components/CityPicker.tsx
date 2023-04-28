@@ -16,7 +16,6 @@ type countryOption = {
   label: string;
 } | null;
 
-// TODO: pick state for United States fix?
 type stateOption = {
   value: {
     latitide: string | null | undefined,
@@ -38,7 +37,6 @@ type cityOption = {
   };
   label: string;
 } | undefined | null;
-
 
 const countryOptions = Country.getAllCountries().map(country => ({
   value: {
@@ -65,26 +63,22 @@ const CityPicker = () => {
 
   const handleSelectedCountry = (option: countryOption) => {
     setSelectedCountry(option);
-    console.log("handleSelectedCountry: " + selectedCountry);
     setSelectedCity(null);
     setSelectedState(null);
   }
 
   const handleSelectedState = (option: stateOption) => {
     setSelectedState(option);
-    console.log("handleSelectedState: " + selectedState);
     setSelectedCity(null);
   }
 
   const handleSelectedCity = (option: cityOption) => {
     setSelectedCity(option);
-    console.log("handleSelectedCity: " + selectedCity);
     router.push(`/location/${option?.value.name}/${option?.value.latitide}/${option?.value.longitude}`)
   }
 
   const getStateOptions = (): any[] => {
     let options = State.getStatesOfCountry(selectedCountry?.value?.isoCode || '') || [];
-    console.log(options);
     return options.map(state => ({
       value: {
         name: state.name,
@@ -101,13 +95,10 @@ const CityPicker = () => {
     let options = [];
 
     if (isCountryWithState) {
-      console.log("inside getCityOptions IF");
       options = City.getCitiesOfState(selectedState?.value?.countryCode || '', selectedState?.value.isoCode || '') || [];
     } else {
       options = City.getCitiesOfCountry(selectedCountry?.value?.isoCode || '') || [];
-      console.log("inside getCityOptions ELSE");
     }
-    console.log(options);
     return options.map(city => ({
       value: {
         latitide: city.latitude,
