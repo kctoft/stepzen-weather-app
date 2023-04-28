@@ -6,14 +6,27 @@ import { useState } from "react"
 import Select from "react-select"
 import { GlobeIcon } from "@heroicons/react/solid"
 
-type option = {
+type countryOption = {
   value: {
     latitide: string,
     longitude: string,
     isoCode: string,
+    name: string,
   };
   label: string;
 } | null;
+
+// TODO: pick state for United States fix?
+type stateOption = {
+  value: {
+    latitide: string | null | undefined,
+    longitude: string | null | undefined,
+    isoCode: string,
+    countryCode: string,
+    name: string,
+  };
+  label: string;
+} | undefined | null;
 
 type cityOption = {
   value: {
@@ -26,23 +39,13 @@ type cityOption = {
   label: string;
 } | undefined | null;
 
-// TODO: pick state for United States fix?
-type stateOption = {
-  value: {
-    latitide: string | null | undefined,
-    longitude: string | null | undefined,
-    countryCode: string,
-    name: string,
-    stateCode: string,
-  };
-  label: string;
-} | undefined | null;
 
 const countryOptions = Country.getAllCountries().map(country => ({
   value: {
     latitide: country.latitude,
     longitude: country.longitude,
     isoCode: country.isoCode,
+    name: country.name,
   },
   label: country.name,
 }))
@@ -53,14 +56,14 @@ const CountriesWithStates = new Set<String>([
 ]);
 
 const CityPicker = () => {
-  const [selectedCountry, setSelectedCountry] = useState<option>(null);
+  const [selectedCountry, setSelectedCountry] = useState<countryOption>(null);
   const [selectedCity, setSelectedCity] = useState<cityOption>(null);
   const [selectedState, setSelectedState] = useState<stateOption>(null);
   const isCountryWithState = CountriesWithStates.has(selectedCountry?.value?.isoCode || '');
 
   const router = useRouter();
 
-  const handleSelectedCountry = (option: option) => {
+  const handleSelectedCountry = (option: countryOption) => {
     setSelectedCountry(option);
     console.log("handleSelectedCountry: " + selectedCountry);
     setSelectedCity(null);
@@ -99,7 +102,7 @@ const CityPicker = () => {
 
     if (isCountryWithState) {
       console.log("inside getCityOptions IF");
-      options = City.getCitiesOfState(selectedCountry?.value?.isoCode || '', selectedState?.value?.stateCode || '');
+      options = City.getCitiesOfState(selectedState?.value?.countryCode || '', selectedState?.value.isoCode || '') || [];
     } else {
       options = City.getCitiesOfCountry(selectedCountry?.value?.isoCode || '') || [];
       console.log("inside getCityOptions ELSE");
