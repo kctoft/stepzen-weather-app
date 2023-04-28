@@ -38,7 +38,7 @@ type stateOption = {
   label: string;
 } | undefined | null;
 
-const options = Country.getAllCountries().map(country => ({
+const countryOptions = Country.getAllCountries().map(country => ({
   value: {
     latitide: country.latitude,
     longitude: country.longitude,
@@ -62,24 +62,27 @@ const CityPicker = () => {
 
   const handleSelectedCountry = (option: option) => {
     setSelectedCountry(option);
+    console.log("handleSelectedCountry: " + selectedCountry);
     setSelectedCity(null);
     setSelectedState(null);
   }
 
-  // TODO: check if this renders the state logic properly of US and UK
   const handleSelectedState = (option: stateOption) => {
     setSelectedState(option);
+    console.log("handleSelectedState: " + selectedState);
     setSelectedCity(null);
-    // router.push(`/location/${option?.value.name}/${option?.value.latitide}/${option?.value.longitude}`)
   }
 
   const handleSelectedCity = (option: cityOption) => {
     setSelectedCity(option);
+    console.log("handleSelectedCity: " + selectedCity);
     router.push(`/location/${option?.value.name}/${option?.value.latitide}/${option?.value.longitude}`)
   }
 
   const getStateOptions = (): any[] => {
-    return (State.getStatesOfCountry(selectedCountry?.value?.isoCode || '') || []).map(state => ({
+    let options = State.getStatesOfCountry(selectedCountry?.value?.isoCode || '') || [];
+    console.log(options);
+    return options.map(state => ({
       value: {
         name: state.name,
         isoCode: state.isoCode,
@@ -92,12 +95,17 @@ const CityPicker = () => {
   }
 
   const getCityOptions = (): any[] => {
-    // if (isCountryWithState) {
+    let options = [];
 
-    // } else {
-
-    // }
-    return (City.getCitiesOfCountry(selectedCountry?.value?.isoCode || '') || []).map(city => ({
+    if (isCountryWithState) {
+      console.log("inside getCityOptions IF");
+      options = City.getCitiesOfState(selectedCountry?.value?.isoCode || '', selectedState?.value?.stateCode || '');
+    } else {
+      options = City.getCitiesOfCountry(selectedCountry?.value?.isoCode || '') || [];
+      console.log("inside getCityOptions ELSE");
+    }
+    console.log(options);
+    return options.map(city => ({
       value: {
         latitide: city.latitude,
         longitude: city.longitude,
@@ -120,11 +128,12 @@ const CityPicker = () => {
           className="text-black"
           value={selectedCountry}
           onChange={handleSelectedCountry}
-          options={options}
+          options={countryOptions}
+          id="countryName"
         />
       </div>
-      {/* {selectedCountry && (
-        // && (
+
+      {selectedCountry && isCountryWithState && (
         <div className="space-y-2">
           <div className="flex items-center space-x-2 text-white/80">
             <GlobeIcon className="h-5 w-5 text-white" />
@@ -135,14 +144,13 @@ const CityPicker = () => {
             value={selectedState}
             onChange={handleSelectedState}
             options={getStateOptions()}
+            id="stateName"
           />
         </div>
-        //   )
-      )} */}
+      )}
 
-      {selectedCountry
-        &&
-        (
+      {((selectedCountry && isCountryWithState && selectedState) ||
+        (selectedCountry && !isCountryWithState)) && (
           <div className="space-y-2">
             <div className="flex items-center space-x-2 text-white/80">
               <GlobeIcon className="h-5 w-5 text-white" />
@@ -153,24 +161,10 @@ const CityPicker = () => {
               value={selectedCity}
               onChange={handleSelectedCity}
               options={getCityOptions()}
+              id="cityName"
             />
           </div>
         )
-        // &&
-        // (
-        //   <div className="space-y-2">
-        //     <div className="flex items-center space-x-2 text-white/80">
-        //       <GlobeIcon className="h-5 w-5 text-white" />
-        //       <label htmlFor="state">State</label>
-        //     </div>
-        //     <Select
-        //       className="text-black"
-        //       value={selectedState}
-        //       onChange={handleSelectedState}
-        //       options={getStateOptions()}
-        //     />
-        //   </div>
-        // )
       }
 
     </div>
@@ -178,22 +172,3 @@ const CityPicker = () => {
 }
 
 export default CityPicker
-
-
-
-{/* {selectedCountry && (
-        // && (
-        <div className="space-y-2">
-          <div className="flex items-center space-x-2 text-white/80">
-            <GlobeIcon className="h-5 w-5 text-white" />
-            <label htmlFor="state">State</label>
-          </div>
-          <Select
-            className="text-black"
-            value={selectedState}
-            onChange={handleSelectedState}
-            options={getStateOptions()}
-          />
-        </div>
-        //   )
-      )} */}
