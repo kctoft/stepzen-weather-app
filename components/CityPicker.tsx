@@ -49,8 +49,21 @@ const countryOptions = Country.getAllCountries().map(country => ({
 }))
 
 const CountriesWithStates = new Set<String>([
+  "AU",
+  "AT",
+  "BR",
+  "DE",
+  "FM",
+  "GB",
+  "IN",
+  "MM",
+  "MX",
+  "MY",
+  "NZ",
+  "NG",
+  "PW",
+  "SS",
   "US",
-  "GB"
 ]);
 
 const CityPicker = () => {
