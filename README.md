@@ -14,6 +14,12 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Backend
+To run the backend, change directory to the `stepzen` folder and run the following command:
+
+```bash
+PATH=$PWD/node_modules/.bin:$PATH stepzen start --dashboard=local
+```
 
 
 ## Learn More
