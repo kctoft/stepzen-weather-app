@@ -1,6 +1,6 @@
 type CurrentWeather {
   is_day: Int
-  temperature: Float
+  temperature: Int
   time: DateTime
   weathercode: Int
   winddirection: Int
@@ -14,6 +14,7 @@ type Daily {
   temperature_2m_max: [Float]
   temperature_2m_min: [Float]
   time: [Date]
+  uv_index_clear_sky_max: [Float]
   uv_index_max: [Float]
   weathercode: [Int]
 }
@@ -25,6 +26,7 @@ type DailyUnits {
   temperature_2m_max: String
   temperature_2m_min: String
   time: String
+  uv_index_clear_sky_max: String
   uv_index_max: String
   weathercode: String
 }
@@ -34,14 +36,14 @@ type Hourly {
   precipitation_probability: [Int]
   rain: [Float]
   relativehumidity_2m: [Int]
-  showers: [Int]
+  showers: [Float]
   snow_depth: [Int]
   snowfall: [Int]
   temperature_2m: [Float]
   time: [DateTime]
   uv_index: [Float]
   uv_index_clear_sky: [Float]
-  windspeed_10m: [Float]
+  windgusts_10m: [Float]
 }
 type HourlyUnits {
   apparent_temperature: String
@@ -56,7 +58,7 @@ type HourlyUnits {
   time: String
   uv_index: String
   uv_index_clear_sky: String
-  windspeed_10m: String
+  windgusts_10m: String
 }
 type Root {
   current_weather: CurrentWeather
@@ -80,9 +82,6 @@ type Query {
     hourly: String
     latitude: String
     longitude: String
-    precipitation_unit: String
-    temperature_unit: String
     timezone: String
-    windspeed_unit: String
   ): Root @rest(endpoint: "https://api.open-meteo.com/v1/forecast")
 }
