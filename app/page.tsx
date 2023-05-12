@@ -11,7 +11,7 @@ export default function Home() {
       <Card className="max-w-4xl mx-auto">
         <Text className="text-6xl font-bold text-center mb-10">Weather AI</Text>
         <Subtitle className="text-xl text-center">
-          Powered by OpenAI, Next.js 13.3, Tremor 2.0 + More!
+          Powered by OpenAI, Nix, Next.js 13.3, Tremor 2.0 + More!
         </Subtitle>
 
         <Divider className="my-10" />
