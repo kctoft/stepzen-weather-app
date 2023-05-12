@@ -54,7 +54,7 @@ const CountriesWithStates = new Set<String>([
   "BR",
   "DE",
   "FM",
-  "GB",
+  // "GB",
   "IN",
   "MM",
   "MX",
