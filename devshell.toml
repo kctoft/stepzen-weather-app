@@ -6,3 +6,13 @@ packages = ["nixpkgs-fmt", "rnix-lsp", "statix", "treefmt", "nodejs_20"]
 [[env]]
 name = "PATH"
 prefix = "$PWD/node_modules/.bin"
+
+[[commands]]
+name = "start-stepzen"
+help = "starts the stepzen graphql server"
+command = "cd stepzen && stepzen start --dashboard=local"
+
+[[commands]]
+name = "start-frontend"
+help = "starts the nextjs webserver"
+command = "npm run dev"

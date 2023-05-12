@@ -23,11 +23,16 @@ async function Weatherpage({ params: { city, lat, long } }: Props) {
   })
 
   const results: Root = data.myQuery;
-  console.log(results)
 
   return (
     <div>
-      Welcome to the weather page {city} {lat} {long}
+      <p>Welcome to the weather page {city} {lat} {long}</p>
+
+      <br />
+
+      <p>
+        {JSON.stringify(results)}
+      </p>
     </div>
   )
 }
