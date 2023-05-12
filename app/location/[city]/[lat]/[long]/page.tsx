@@ -30,6 +30,7 @@ async function Weatherpage({ params: { city, lat, long } }: Props) {
 
       <br />
 
+      {/* Verifies that the endpt query functions as expected */}
       <p>
         {JSON.stringify(results)}
       </p>
