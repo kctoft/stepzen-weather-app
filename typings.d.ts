@@ -1,6 +1,6 @@
 interface CurrentWeather {
   is_day: number;
-  temperature: number;
+  temperature:number;
   time: string;
   weathercode: number;
   winddirection: number;
@@ -43,24 +43,23 @@ interface Hourly {
   time: [string];
   uv_index: [number];
   uv_index_clear_sky: [number];
-  windgusts_10m: [number];
+  windspeed_10m: [number];
 }
 interface HourlyUnits {
   apparent_temperature: string;
-  precipitation: string;
+  precipitation: s;tring;
   precipitation_probability: string;
   rain: string;
   relativehumidity_2m: string;
   showers: string;
-  snow_depth: string;
+  snow_depth: string
   snowfall: string;
   temperature_2m: string;
   time: string;
   uv_index: string;
   uv_index_clear_sky: string;
-  windgusts_10m: string;
+  windspeed_10m: string;
 }
-
 interface Root {
   current_weather: CurrentWeather;
   daily: Daily;
@@ -72,5 +71,6 @@ interface Root {
   latitude: number;
   longitude: number;
   timezone: string;
+  timezone_abbreviation: string;
   utc_offset_seconds: number;
 }
