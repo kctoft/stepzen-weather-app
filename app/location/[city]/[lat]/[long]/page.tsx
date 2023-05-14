@@ -54,23 +54,25 @@ async function Weatherpage({ params: { city, lat, long } }: Props) {
           </div>
 
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 m-2">
-            {/* TODO: update: use F not C degrees */}
             <StatCard
               title="Maximum Temperature"
-              metric={`${results.daily.temperature_2m_max[0].toFixed(1)}°`}
+              metric={`${(results.daily.temperature_2m_max[0] * (9 / 5) + 32).toFixed(1)}° F`}
+              // metric={`${results.daily.temperature_2m_max[0].toFixed(1)}°`}
               color="yellow"
             />
 
             <StatCard
               title="Minimum Temperature"
-              metric={`${results.daily.temperature_2m_min[0].toFixed(1)}°`}
+              metric={`${(results.daily.temperature_2m_min[0] * (9 / 5) + 32).toFixed(1)}° F`}
+              // metric={`${results.daily.temperature_2m_min[0].toFixed(1)}°`}
               color="green"
             />
 
-            {/* TODO: reading null property - BUG */}
+            {/* /* TODO: reading null property - BUG */}
             {/* <div>
               <StatCard
                 title="UV Index"
+
                 metric={results.daily.uv_index_max[0].toFixed(1)}
                 color="rose"
               />
