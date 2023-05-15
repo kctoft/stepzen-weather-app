@@ -58,13 +58,15 @@ function InformationPanel({ city, lat, long, results }: Props) {
             height={75}
           />
 
-          <div>
-            {/* TODO: update from C -> F */}
-            <p>{(results.current_weather.temperature * (9 / 5) + 32).toFixed(1)}° F</p>
+          <div className="flex items-center justify-between space-x-10">
+            <p className="text-6xl font-semibold">
+              {(results.current_weather.temperature * (9 / 5) + 32).toFixed(1)}° F
+            </p>
+
+            <p className="text-right font-extralight text-lg">
+              {weatherCodeToString[results.current_weather.weathercode].label}
+            </p>
           </div>
-          <p>
-            {weatherCodeToString[results.current_weather.weathercode].label}
-          </p>
 
         </div>
       </div>
