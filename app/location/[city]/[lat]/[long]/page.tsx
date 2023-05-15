@@ -32,8 +32,8 @@ async function Weatherpage({ params: { city, lat, long } }: Props) {
     <div>
       <InformationPanel
         city={city}
-        lat={lat}
-        long={long}
+        lat={Number(lat).toFixed(2)}
+        long={Number(long).toFixed(2)}
         results={results}
       />
 
