@@ -69,7 +69,7 @@ const fetchWeatherQuery = gql`
         time
         uv_index
         uv_index_clear_sky
-        windgusts_10m
+        windspeed_10m
       }
       hourly_units {
         apparent_temperature
@@ -84,7 +84,7 @@ const fetchWeatherQuery = gql`
         time
         uv_index
         uv_index_clear_sky
-        windgusts_10m
+        windspeed_10m
       }
     }
   }
