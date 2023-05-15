@@ -1,6 +1,7 @@
 import { MoonIcon, SunIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import CityPicker from "./CityPicker";
+import weatherCodeToString from "@/lib/weatherCodeToString";
 
 type Props = {
   city: string;
@@ -56,6 +57,9 @@ function InformationPanel({ city, lat, long, results }: Props) {
             {/* TODO: update from C -> F */}
             <p>{(results.current_weather.temperature * (9 / 5) + 32).toFixed(1)}° F</p>
           </div>
+          <p>
+            {weatherCodeToString[results.current_weather.weathercode].label}
+          </p>
 
         </div>
       </div>
