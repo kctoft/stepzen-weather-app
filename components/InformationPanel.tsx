@@ -51,7 +51,12 @@ function InformationPanel({ city, lat, long, results }: Props) {
 
       <div>
         <div>
-          {/* image */}
+          <Image
+            src={`https://www.weatherbit.io/static/img/icons/${weatherCodeToString[results.current_weather.weathercode].icon}.png`}
+            alt={weatherCodeToString[results.current_weather.weathercode].label}
+            width={75}
+            height={75}
+          />
 
           <div>
             {/* TODO: update from C -> F */}

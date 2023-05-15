@@ -32,5 +32,6 @@ TBA -->
 - [TypeScript](https://www.typescriptlang.org/)
 - [StepZen](https://stepzen.com/) is a GraphQL server with a unique architecture.
 - [Free Weather API](https://open-meteo.com/)
+- [Weather API Icons](https://www.weatherbit.io/)
 - [Tremor](https://www.tremor.so/) for stylized components
 - [Tailwind CSS](https://tailwindcss.com/)
