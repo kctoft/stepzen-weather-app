@@ -24,7 +24,7 @@ async function Weatherpage({ params: { city, lat, long } }: Props) {
       current_weather: "true",
       latitude: lat,
       longitude: long,
-      // TODO: pass in correct timezone as a prop?
+      // relative to me
       timezone: "PST",
     }
   })
