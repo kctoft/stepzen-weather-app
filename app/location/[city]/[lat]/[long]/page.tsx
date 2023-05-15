@@ -45,7 +45,6 @@ async function Weatherpage({ params: { city, lat, long } }: Props) {
           <div className="pb-5">
             <h2 className="text-xl font-bold">Todays Overview</h2>
             <p className="text-sm text-gray-400">Last Updated at: {" "}
-              {/* TODO: current date is returning the wrong value */}
               {new Date(results.current_weather.time).toLocaleString()}({results.timezone})
             </p>
           </div>
