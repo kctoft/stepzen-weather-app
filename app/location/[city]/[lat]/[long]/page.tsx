@@ -24,8 +24,8 @@ async function Weatherpage({ params: { city, lat, long } }: Props) {
       current_weather: "true",
       latitude: lat,
       longitude: long,
-      // TODO: pass in correct timezone as a prop
-      timezone: "GMT",
+      // TODO: pass in correct timezone as a prop?
+      timezone: "PST",
     }
   })
 
@@ -59,13 +59,13 @@ async function Weatherpage({ params: { city, lat, long } }: Props) {
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 m-2">
             <StatCard
               title="Maximum Temperature"
-              metric={`${(results.daily.temperature_2m_max[0] * (9 / 5) + 32).toFixed(1)}° F`}
+              metric={`${(results.daily.temperature_2m_max[0] * (9 / 5) + 32).toFixed(1)}°F`}
               color="yellow"
             />
 
             <StatCard
               title="Minimum Temperature"
-              metric={`${(results.daily.temperature_2m_min[0] * (9 / 5) + 32).toFixed(1)}° F`}
+              metric={`${(results.daily.temperature_2m_min[0] * (9 / 5) + 32).toFixed(1)}°F`}
               color="green"
             />
 
