@@ -32,6 +32,7 @@
     "vercel": "^29.3.0"
   },
   "devDependencies": {
+    "jest": "^29.5.0",
     "stepzen": "^0.29.0"
   }
 }

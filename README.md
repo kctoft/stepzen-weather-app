@@ -6,7 +6,8 @@ A Stepzen Weather AI App using the chatGPT API.
 Check out a live [demo](https://stepzen-weather-app-silk.vercel.app/).
 
 <!-- ![dev](./public/images/Weather-AI-App.png) -->
-![architecture](./public/images/stepzen-Weather-AI-App.png)
+![architecture](./public/images/tech1.png)
+![architecture](./public/images/tech2.png)
 
 ### Development:
 - [Nix](https://nixos.org/) package manager - version control [Nix Flakes](https://nixos.wiki/wiki/Flakes)
