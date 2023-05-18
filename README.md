@@ -54,6 +54,6 @@ Once the city of choice has been selected, the request is posted and the client 
 ![desktop view](./public/images/desktop_resp.gif)
 <p style="text-align: center;">Desktop View & Responsive</p>
 
-This application is moile responsive. The example is shown below.
+This application is mobile responsive. The example is shown below.
 
 ![mobile view](./public/images/mobile_view.gif)
